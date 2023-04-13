@@ -1,0 +1,65 @@
+package Assignment;
+
+public class TestSerializableStudent implements Runnable{
+    public static void main(String[] args) {
+        TestSerializableStudent test =new TestSerializableStudent();
+        Thread t = new Thread(test,"child");
+        t.start();
+
+    }
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+        Student s = new Student("chait",23,"A+");
+        new StudentSerializableOperation().SerializedObject(s);
+
+
+    }
+}
+
+
+
+
+
+
+package Assignment;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+public class StudentSerializableOperation {
+    public void SerializedObject(Student s){
+        try {
+            FileOutputStream fileOut = new FileOutputStream("student.ser");
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(s);
+            objOut.close();
+            fileOut.close();
+            System.out.println("Operation Complete");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+
+package Assignment;
+
+public class TestSerializableStudent implements Runnable{
+    public static void main(String[] args) {
+        TestSerializableStudent test =new TestSerializableStudent();
+        Thread t = new Thread(test,"child");
+        t.start();
+
+    }
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+        Student s = new Student("chait",23,"A+");
+        new StudentSerializableOperation().SerializedObject(s);
+
+
+    }
+}
